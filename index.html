@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+    body, html {
+  margin: 0;
+  padding: 0;
+}
+html {
+  scroll-behavior: smooth;
+}
+
+#hamburg {
+  display: none;
+}
+
+#text {
+  display: flex; 
+  justify-content: center;
+  align-items: center;
+  
+}
+
+#text a {
+  padding: 15px;
+  margin: 0 30px;
+  text-decoration: none; 
+  font-family: "Arial", sans-serif;
+  color: white;
+}
+
+#text.active { 
+  display: flex;
+  padding: 15px;
+  flex-direction: column;
+  position: absolute;
+  top: 100%; 
+  left: 0;
+  width: 100%;
+  text-align: center;
+  
+}
+
+.barra{
+   display: flex;
+   position: fixed;
+  opacity: 0.95; 
+   justify-content: center;
+  margin:0;
+   top: 0;          
+  width: 100%;   
+  background-color: #7e41b3;
+  padding: 15px;
+  text-align: center;
+
+}
+
+@media screen and (max-width: 1200px) {
+  #hamburg {
+    display: block;
+  }
+
+  #text {
+    display: none;
+  }
+}
+#section1 {
+  margin: 200px; 
+  height: 600px;
+  background-color: pink;
+}
+
+#section2 {
+  margin: 200px;  
+  height: 600px;
+  background-color: yellow;
+}
+#section3 {
+  margin: 200px;  
+  height: 300px;
+  background-color: aqua;
+}
+
+
+</style>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    hamburger.addEventListener('click', function() {
+    
+});})
+</script>
+</head>
+<body>
+
+<br><br><br>
+
+<div class="barra">
+    <div id="hamburg">
+        <button class="hamburger-icon">&#9776;</button>
+        </div>
+    <div id="text">
+    <a href="#section1" id="a1">Seção 1</a>
+    <a href="#section2" id="a2">Seção 2</a>
+    <a href="#section3" id="a3">Seção 3</a> 
+        </div>
+    </div>
+<div class="main" id="section1">
+  <h2>seção 1</h2>
+</div>
+
+<div class="main" id="section2">
+  <h2>seção 2</h2>
+ 
+</div>
+
+<div class="main" id="section3">
+  <h2>seção 3</h2>
+ 
+</div>
+</body>
+</html>
