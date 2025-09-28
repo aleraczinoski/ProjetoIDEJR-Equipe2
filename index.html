@@ -1,186 +1,113 @@
 <!DOCTYPE html>
 <html>
-<head>
-<style>
-    body, html {
-  margin: 0;
-  padding: 0;
-}
-html {
-  scroll-behavior: smooth;
-}
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Program.Ada - Mulheres da Computação</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const hamburger = document.querySelector('#hamburg');
+      const hamburgMenu = document.querySelector('.hamburgclick');
 
-#hamburg {
-  display: none;
-}
-.hamburgclick{
-  display:none;
-}
-
-.hamburgclick.active {
-  display: flex;
-  padding: 15px;
-  flex-direction: column;
-  position: fixed;
-  top: 55px;
-  left: 0;
-  width: 100%;
-  background-color: #7e41b3;
-  text-align: center;
-  z-index: 999; 
-}
-
-#text {
-  display: flex; 
-  justify-content: center;
-  align-items: center;
-  
-}
-
-#text a {
-  padding: 15px;
-  border-radius: 15px;
-  margin: 0 30px;
-  text-decoration: none; 
-  font-family: "Arial", sans-serif;
-  color: white;
-}
-
-#text.active { 
-  display: flex;
-  padding: 15px;
-  flex-direction: column;
-  position: absolute;
-  top: 100%; 
-  left: 0;
-  width: 100%;
-  text-align: center;
-  
-}
-#text a:hover{
-    color: rgb(225, 190, 236);
-    background-color: #4d2a6b;
-}
-
-.barra{
-   display: flex;
-   position: fixed;
-  opacity: 0.95; 
-   justify-content: center;
-  margin:0;
-   top: 0;          
-  width: 100%;   
-  background-color: #7e41b3;
-  padding: 15px;
-  text-align: center;
-
-}
-
-@media screen and (max-width: 1200px) {
-  #hamburg {
-    display: block;
-  }
-
-  #text {
-    display: none;
-  }
-  .hamburgclick{
-    display: block;
-  }
-}
-#section1 {
-  margin: 200px; 
-  height: 600px;
-  background-color: pink;
-}
-
-#section2 {
-  margin: 200px;  
-  height: 600px;
-  background-color: yellow;
-}
-#section3 {
-  margin: 200px;  
-  height: 300px;
-  background-color: aqua;
-}
-.end{
-    opacity: 0.95; 
-   justify-content: center;
-  margin:0;
-   top: 0;          
-  width: 100%;   
-  background-color: #7e41b3;
-  padding: 10px;
-  text-align: center;
-}
-
-</style>
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-  const hamburger = document.querySelector('#hamburg');
-  const hamburgMenu = document.querySelector('.hamburgclick');
-
-  hamburger.addEventListener('click', function() {
-    hamburgMenu.classList.toggle('active');
-  });
-  window.addEventListener('resize', function() {
-    const screenWidth = window.innerWidth;
-    if (screenWidth > 1200) {
-      hamburgMenu.classList.remove('active');
-    }
-  });
-});
-</script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-</head>
-<body>
-
-<div class="barra">
-    <div id="hamburg">
-        <button class="hamburger-icon">&#9776;</button>
+      hamburger.addEventListener('click', function() {
+        hamburgMenu.classList.toggle('active');
+      });
+      window.addEventListener('resize', function() {
+        const screenWidth = window.innerWidth;
+        if (screenWidth > 1200) {
+          hamburgMenu.classList.remove('active');
+        }
+      });
+    });
+    </script>
+  </head>
+  <body>
+    <nav>
+        <div id="hamburg">
+            <button class="hamburger-icon">&#9776;</button>
         </div>
-    <div id="text">
-    <a href="#section1" id="a1">Seção 1</a>
-    <a href="#section2" id="a2">Seção 2</a>
-    <a href="#section3" id="a3">Seção 3</a> 
+        <div id="text">
+          <a href="#quemsomosnós" id="a1">Quem somos nós?</a>
+          <a href="#nossosobjetivos" id="a2">Nossos Objetivos</a>
+          <a href="#" id="a3">Projetos</a> 
+          <a href="#meninasdigitais" id="a3">Meninas Digitais</a> 
+          <a href="#" id="a3">Integrantes</a> 
+          <a href="#" id="a3">Contate-nos</a> 
         </div>
+    </nav>
+    <div class="hamburgclick">
+          <a href="#quemsomosnós" id="a1.h">Quem somos nós?</a><br>
+          <a href="#nossosobjetivos" id="a2.h">Nossos Objetivos</a><br>
+          <a href="#" id="a3.h">Projetos</a><br>
+          <a href="#meninasdigitais" id="a4.h">Meninas Digitais</a><br>
+          <a href="#" id="a5.h">Integrantes</a><br>
+          <a href="#" id="a6.h">Contate-nos</a><br>
     </div>
 
-<div class="hamburgclick">
-    <a href="#section1" id="a1.h">Seção 1</a><br>
-    <a href="#section2" id="a2.h">Seção 2</a><br>
-    <a href="#section3" id="a3.h">Seção 3</a><br>
-</div>
-<div class="main" id="section1">
-  <h2>seção 1</h2>
-</div>
+    <div>
+      <img src="https://ps2025v2-3n2i4makt-henrique-lindemanns-projects.vercel.app/_next/image?url=%2Fimages%2Fhero.png&w=1200&q=75" alt="Imagem Programada" id="ImagemProgramada">
+    </div>
 
-<div class="main" id="section2">
-  <h2>seção 2</h2>
-  
-</div>
 
-<div class="main" id="section3">
-  <h2>seção 3</h2>
- 
-</div>
-<div class="end">
-    <a href="https://instagram.com/program.ada.ufrgs" target="_blank">
-        <button>
-        <i style="font-size: 24px;" class="fab fa-instagram"></i>
-        </button>
-    </a>
-    <a href="https://www.linkedin.com/company/program-ada-ufrgs/?originalSubdomain=br target="_blank">
-        <button>
-        <i style="font-size: 24px;" class="fab fa-linkedin-in"></i>
-        </button>
-    </a>
-    <a href="https://www.instagram.com/ide_jr/" target="_blank">
-        <button>
-        <img width="20" height="20" src="img/ide.jpg">
-            </button>
-    </a>
-</div>
-</body>
+    <section class="secao" id="quemsomosnós">
+      <div class="container">
+        <div class="gradiente">
+          <div class="background-branco">
+            <h2>Quem somos nós?</h2>
+            <p>O Program.Ada nasceu no Instituto de Informática em 2017, quando um grupo de alunas se uniu para enfrentar situações de assédio vividas na universidade. Dessa iniciativa, surgiram a Comissão de Relacionamentos do INF e o Coletivo de Mulheres na Computação.</p>
+            <p>No começo, o coletivo ainda não possuía um nome. Com o tempo, percebemos a importância de celebrar a trajetória de Ada Lovelace, considerada a primeira programadora da história, e assim surgiu o Program.Ada.</p>
+            <p>Desde então, realizamos rodas de conversa, cine-debates, oficinas e eventos que fortalecem o protagonismo das mulheres na tecnologia e promovem reflexões sobre gênero e inclusão na comunidade acadêmica e além dela.</p>
+            <p>Em 2023, o coletivo deu um passo marcante ao se tornar também um projeto de extensão universitária, ampliando seu alcance e o impacto de suas ações na sociedade.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="secao" id="nossosobjetivos">
+      <div class="container">
+        <div class="gradiente">
+          <div class="background-branco ">
+            <h2>Nossos objetivos:</h2>
+            <ul>
+              <li>Construir um espaço seguro e acolhedor, onde mulheres possam compartilhar experiências, trocar ideias e dialogar sobre temas em comum.</li>
+              <li>Apoiar a inserção de mulheres no mercado de tecnologia, oferecendo desde oportunidades de networking até suporte na elaboração de currículos e trajetórias profissionais.</li>
+              <li>Promover atividades e eventos para a comunidade, ampliando as discussões sobre a presença das mulheres na tecnologia e sua atuação no mercado de trabalho.</li>
+              <li>Transformar o INF em um ambiente mais inclusivo e amigável para mulheres, incentivando o respeito, a diversidade e a equidade de gênero.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="secao" id="meninasdigitais">
+      <div class="container">
+        <div class="gradiente">
+          <div class="background-branco">
+            <h2>Meninas Digitais</h2>
+            <p>A partir de 2024, o Program.Ada passou a integrar o Programa Meninas Digitais, uma iniciativa da Sociedade Brasileira de Computação (SBC), voltada à valorização e incentivo da participação feminina na área de Tecnologia da Informação (TI).</p>
+            <p>O Meninas Digitais nasceu a partir de discussões realizadas no Women in Information Technology (WIT), evento que compõe o Congresso da SBC. Desde 2007, o WIT tem como propósito debater questões de gênero na TI no Brasil, destacando histórias de sucesso, políticas de incentivo e estratégias de engajamento para atrair jovens - especialmente mulheres - às carreiras ligadas à computação e à tecnologia.</p>
+            <p>Para ampliar seu alcance em todo o país, o programa conta com a atuação de Projetos Parceiros, que desenvolvem ações locais alinhadas aos objetivos do Meninas Digitais, fortalecendo a rede de multiplicadoras dessa iniciativa. Além disso, o programa se sustenta graças ao apoio de empresas e instituições parceiras, já que a SBC é uma entidade sem fins lucrativos e suas atividades são conduzidas por pessoas voluntárias.</p>
+            <p>Ao integrar o Meninas Digitais, o Program.Ada fortalece ainda mais sua missão de incentivar a participação feminina na área de tecnologia, ampliando seu impacto dentro e fora da universidade, em sintonia com uma rede nacional de iniciativas que compartilham do mesmo ideal.</p>
+            <p>Para maiores informações do programa, acesse o Link: <a class="link-meninasdigitais" target="_blank" href="https://meninas.sbc.org.br/">https://meninas.sbc.org.br/</a></p>
+            
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+        <a href="https://instagram.com/program.ada.ufrgs" target="_blank">
+            
+        </a>
+        <a href="https://www.linkedin.com/company/program-ada-ufrgs/?originalSubdomain=br" target="_blank">
+            
+        </a>
+        <a href="https://www.instagram.com/ide_jr/" target="_blank">
+            
+    </footer>
+  </body>
 </html>
