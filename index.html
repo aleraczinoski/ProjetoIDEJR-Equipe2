@@ -13,6 +13,22 @@ html {
 #hamburg {
   display: none;
 }
+.hamburgclick{
+  display:none;
+}
+
+.hamburgclick.active {
+  display: flex;
+  padding: 15px;
+  flex-direction: column;
+  position: fixed;
+  top: 55px;
+  left: 0;
+  width: 100%;
+  background-color: #7e41b3;
+  text-align: center;
+  z-index: 999; 
+}
 
 #text {
   display: flex; 
@@ -23,6 +39,7 @@ html {
 
 #text a {
   padding: 15px;
+  border-radius: 15px;
   margin: 0 30px;
   text-decoration: none; 
   font-family: "Arial", sans-serif;
@@ -39,6 +56,10 @@ html {
   width: 100%;
   text-align: center;
   
+}
+#text a:hover{
+    color: rgb(225, 190, 236);
+    background-color: #4d2a6b;
 }
 
 .barra{
@@ -63,6 +84,9 @@ html {
   #text {
     display: none;
   }
+  .hamburgclick{
+    display: block;
+  }
 }
 #section1 {
   margin: 200px; 
@@ -80,19 +104,37 @@ html {
   height: 300px;
   background-color: aqua;
 }
-
+.end{
+    opacity: 0.95; 
+   justify-content: center;
+  margin:0;
+   top: 0;          
+  width: 100%;   
+  background-color: #7e41b3;
+  padding: 10px;
+  text-align: center;
+}
 
 </style>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    hamburger.addEventListener('click', function() {
-    
-});})
+  const hamburger = document.querySelector('#hamburg');
+  const hamburgMenu = document.querySelector('.hamburgclick');
+
+  hamburger.addEventListener('click', function() {
+    hamburgMenu.classList.toggle('active');
+  });
+  window.addEventListener('resize', function() {
+    const screenWidth = window.innerWidth;
+    if (screenWidth > 1200) {
+      hamburgMenu.classList.remove('active');
+    }
+  });
+});
 </script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-
-<br><br><br>
 
 <div class="barra">
     <div id="hamburg">
@@ -104,18 +146,41 @@ document.addEventListener('DOMContentLoaded', function() {
     <a href="#section3" id="a3">Seção 3</a> 
         </div>
     </div>
+
+<div class="hamburgclick">
+    <a href="#section1" id="a1.h">Seção 1</a><br>
+    <a href="#section2" id="a2.h">Seção 2</a><br>
+    <a href="#section3" id="a3.h">Seção 3</a><br>
+</div>
 <div class="main" id="section1">
   <h2>seção 1</h2>
 </div>
 
 <div class="main" id="section2">
   <h2>seção 2</h2>
- 
+  
 </div>
 
 <div class="main" id="section3">
   <h2>seção 3</h2>
  
+</div>
+<div class="end">
+    <a href="https://instagram.com/program.ada.ufrgs" target="_blank">
+        <button>
+        <i style="font-size: 24px;" class="fab fa-instagram"></i>
+        </button>
+    </a>
+    <a href="https://www.linkedin.com/company/program-ada-ufrgs/?originalSubdomain=br target="_blank">
+        <button>
+        <i style="font-size: 24px;" class="fab fa-linkedin-in"></i>
+        </button>
+    </a>
+    <a href="https://www.instagram.com/ide_jr/" target="_blank">
+        <button>
+        <img width="20" height="20" src="img/ide.jpg">
+            </button>
+    </a>
 </div>
 </body>
 </html>
