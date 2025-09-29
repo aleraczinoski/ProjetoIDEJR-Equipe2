@@ -10,7 +10,233 @@
       href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="style.css" />
+    <style>* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  transition: all 0.3s;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 62.5%;
+}
+
+body {
+  font-family: "Press Start 2P", "Press Start 2P Fallback";
+  font-size: 1.6rem;
+  line-height: 1.4;
+  color: #2c003e;
+  background-image: linear-gradient(
+    180deg,
+    rgb(215, 186, 241),
+    rgb(239, 196, 247)
+  );
+}
+
+nav {
+  display: flex;
+  position: sticky;
+  justify-content: center;
+  margin: 0;
+  top: 0;
+  width: 100%;
+  background-color: rgba(157, 124, 191);
+  padding: 25px 0;
+  text-align: center;
+  z-index: 999;
+  font-size: 1rem;
+}
+
+h2 {
+  font-size: 2.3rem;
+  margin-bottom: 2rem;
+  font-weight: 500;
+}
+
+p,
+li {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  text-align: justify;
+}
+
+li {
+  padding-bottom: 1.2rem;
+  margin: 0 1.8rem;
+}
+
+li::marker {
+  color: #e84393;
+  font-size: 2.5rem;
+}
+
+.secao {
+  padding: 7.63rem 2rem;
+  scroll-margin-top: 7.5rem;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+  padding: 0.4rem;
+  border: solid 0.2rem #2c003e;
+}
+
+.gradiente {
+  background-image: linear-gradient(110deg, #8a2be2, #e84393);
+  padding: 0.8rem;
+}
+
+.background-branco {
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 3.5rem;
+  backdrop-filter: blur(4px);
+}
+
+#imagem-hamburg {
+  width: 2.5rem;
+  height: 2.5rem;
+}
+
+#hamburg {
+  display: none;
+}
+
+.hamburgclick {
+  display: none;
+}
+
+.hamburgclick.active {
+  display: flex;
+  padding: 1.5rem;
+  flex-direction: column;
+  position: fixed;
+  top: 9rem;
+  left: 0;
+  width: 100%;
+  background-color: #fff;
+  text-align: center;
+  z-index: 999;
+}
+
+.hamburgclick a {
+  color: #9d7cbf;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 1rem 1.5rem;
+  transition: all 0.2s;
+  text-decoration: none;
+  text-align: left;
+  border-radius: 3;
+}
+
+.hamburgclick a:hover {
+  color: #7a5c99;
+  background-color: rgba(157, 124, 191, 0.1);
+  box-shadow: 0 0.4rem 1.2rem rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+}
+
+.hamburger-icon {
+  background: transparent;
+  border: none;
+  padding: 3px;
+  
+  cursor: pointer;
+  color: #dfd9d9;
+  transform: translateY(5px);
+  }
+
+.hamburger-icon svg rect {
+  fill: currentColor;
+  border-radius: 5px;
+}
+
+
+#text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#text a {
+  padding: 0.8rem 1.2rem;
+  border-radius: 1.5rem;
+  margin: 0 1.8rem;
+  text-decoration: none;
+  color: white;
+  font-weight: 400;
+}
+
+#text.active {
+  display: flex;
+  padding: 1.5rem;
+  flex-direction: column;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  text-align: center;
+}
+
+#text a:hover {
+  color: #7a5c99;
+  background-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+  padding: 0.8rem 1.2rem;
+}
+
+@media screen and (max-width: 1200px) {
+  #hamburg {
+    display: block;
+  }
+  #text {
+    display: none;
+  }
+}
+
+#ImagemProgramada {
+  width: 100%;
+}
+
+.link-meninasdigitais:link,
+.link-meninasdigitais:visited,
+.link-meninasdigitais:hover,
+.link-meninasdigitais:active {
+  color: #8a2be2;
+  font-size: 1.2rem;
+}
+
+footer {
+  justify-content: center;
+  margin: 0;
+  top: 0;
+  width: 100%;
+  padding: 2.4rem 0;
+  text-align: center;
+  background-image: linear-gradient(
+    135deg,
+    rgba(116, 7, 218, 0.65) 0%,
+    rgba(156, 49, 101, 0.52) 100%
+  );
+}
+
+.icon-footer {
+  height: 3.6rem;
+  fill: #fff;
+}
+
+footer a {
+  text-decoration: none;
+  margin: 0 2%;
+}
+
+.icon-footer:hover {
+  transform: translateY(-3px);
+}</style>
     <script>
   document.addEventListener("DOMContentLoaded", function () {
     const hamburger = document.querySelector("#hamburg");
@@ -36,7 +262,12 @@
   <body>
     <nav>
       <div id="hamburg">
-        <button class="hamburger-icon"> &#9776;</button>
+        <button class="hamburger-icon"><svg viewBox="0 0 100 80" width="40" height="30">
+                                          
+                                          <rect width="100" height="10" rx="5px"></rect>
+                                          <rect y="28" width="100" height="10" rx="5px"></rect>
+                                          <rect y="56" width="100" height="10" rx="5px"></rect>
+</svg></button>
       </div>
       <div id="text">
         <a href="#quemsomosnós" id="a1">Quem somos nós?</a>
