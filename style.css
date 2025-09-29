@@ -62,7 +62,7 @@ li::marker {
 
 .secao {
   padding: 7.63rem 2rem;
-  scroll-margin-top: 7.63rem;
+  scroll-margin-top: 7.5rem;
 }
 
 .container {
@@ -84,9 +84,15 @@ li::marker {
   backdrop-filter: blur(4px);
 }
 
+#imagem-hamburg {
+  width: 2.5rem;
+  height: 2.5rem;
+}
+
 #hamburg {
   display: none;
 }
+
 .hamburgclick {
   display: none;
 }
@@ -99,9 +105,26 @@ li::marker {
   top: 5.5rem;
   left: 0;
   width: 100%;
-  background-color: #7e41b3;
+  background-color: #fff;
   text-align: center;
   z-index: 999;
+}
+
+.hamburgclick a {
+  color: #9d7cbf;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 1rem 1.5rem;
+  transition: all 0.2s;
+  text-decoration: none;
+  text-align: left;
+  border-radius: ;
+}
+
+.hamburgclick a:hover {
+  color: #7a5c99;
+  background-color: rgba(157, 124, 191, 0.1);
+  box-shadow: 0 0.4rem 1.2rem rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
 }
 
 #text {
@@ -142,12 +165,8 @@ li::marker {
   #hamburg {
     display: block;
   }
-
   #text {
     display: none;
-  }
-  .hamburgclick {
-    display: block;
   }
 }
 
