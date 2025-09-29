@@ -16,9 +16,9 @@ body {
   line-height: 1.4;
   color: #2c003e;
   background-image: linear-gradient(
-    90deg,
-    rgb(207, 177, 236),
-    rgb(206, 150, 216)
+    180deg,
+    rgb(215, 186, 241),
+    rgb(239, 196, 247)
   );
 }
 
@@ -30,32 +30,39 @@ nav {
   top: 0;
   width: 100%;
   background-color: rgba(157, 124, 191);
-  padding: 1.5rem;
+  padding: 25px 0;
   text-align: center;
   z-index: 999;
   font-size: 1rem;
 }
 
 h2 {
-  font-size: 2rem;
-  margin-bottom: 2.5rem;
+  font-size: 2.3rem;
+  margin-bottom: 2rem;
+  font-weight: 500;
 }
 
 p,
 li {
-  font-size: 1.2rem;
-  line-height: 1.8;
+  font-size: 1.1rem;
+  line-height: 1.6;
   margin-bottom: 1.5rem;
   text-align: justify;
 }
 
+li {
+  padding-bottom: 1.2rem;
+  margin: 0 1.8rem;
+}
+
 li::marker {
   color: #e84393;
-  font-size: large;
+  font-size: 2.5rem;
 }
 
 .secao {
   padding: 7.63rem 2rem;
+  scroll-margin-top: 7.63rem;
 }
 
 .container {
@@ -104,9 +111,9 @@ li::marker {
 }
 
 #text a {
-  padding: 1.5rem;
+  padding: 0.8rem 1.2rem;
   border-radius: 1.5rem;
-  margin: 0 3rem;
+  margin: 0 1.8rem;
   text-decoration: none;
   color: white;
   font-weight: 400;
@@ -125,8 +132,10 @@ li::marker {
 
 #text a:hover {
   color: #7a5c99;
-  background-color: rgba(157, 124, 191, 0.1);
+  background-color: rgba(255, 255, 255, 0.2);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+  padding: 0.8rem 1.2rem;
 }
 
 @media screen and (max-width: 1200px) {
@@ -147,7 +156,9 @@ li::marker {
 }
 
 .link-meninasdigitais:link,
-.link-meninasdigitais:visited {
+.link-meninasdigitais:visited,
+.link-meninasdigitais:hover,
+.link-meninasdigitais:active {
   color: #8a2be2;
   font-size: 1.2rem;
 }
@@ -157,12 +168,25 @@ footer {
   margin: 0;
   top: 0;
   width: 100%;
-  background-color: #7e41b3;
-  padding: 1rem;
+  padding: 2.4rem 0;
   text-align: center;
+  background-image: linear-gradient(
+    135deg,
+    rgba(116, 7, 218, 0.65) 0%,
+    rgba(156, 49, 101, 0.52) 100%
+  );
 }
 
-.icone-footer {
-  width: 3.6rem;
+.icon-footer {
   height: 3.6rem;
+  fill: #fff;
+}
+
+footer a {
+  text-decoration: none;
+  margin: 0 2%;
+}
+
+.icon-footer:hover {
+  transform: translateY(-3px);
 }
