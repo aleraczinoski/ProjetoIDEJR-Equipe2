@@ -102,7 +102,7 @@ li::marker {
   padding: 1.5rem;
   flex-direction: column;
   position: fixed;
-  top: 5.5rem;
+  top: 9rem;
   left: 0;
   width: 100%;
   background-color: #fff;
@@ -117,7 +117,7 @@ li::marker {
   transition: all 0.2s;
   text-decoration: none;
   text-align: left;
-  border-radius: ;
+  border-radius: 3;
 }
 
 .hamburgclick a:hover {
@@ -125,6 +125,21 @@ li::marker {
   background-color: rgba(157, 124, 191, 0.1);
   box-shadow: 0 0.4rem 1.2rem rgba(0, 0, 0, 0.15);
   transform: translateY(-2px);
+}
+
+.hamburger-icon {
+  background: transparent;
+  border: none;
+  padding: 3px;
+
+  cursor: pointer;
+  color: #dfd9d9;
+  transform: translateY(5px);
+}
+
+.hamburger-icon svg rect {
+  fill: currentColor;
+  border-radius: 5px;
 }
 
 #text {
@@ -159,15 +174,6 @@ li::marker {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   transform: translateY(-2px);
   padding: 0.8rem 1.2rem;
-}
-
-@media screen and (max-width: 1200px) {
-  #hamburg {
-    display: block;
-  }
-  #text {
-    display: none;
-  }
 }
 
 #ImagemProgramada {
@@ -208,4 +214,36 @@ footer a {
 
 .icon-footer:hover {
   transform: translateY(-3px);
+}
+
+/* Computador */
+@media screen and (max-width: 1200px) {
+  #hamburg {
+    display: block;
+  }
+  #text {
+    display: none;
+  }
+}
+
+/* Mobile */
+@media screen and (max-width: 768px) {
+  .secao {
+    padding: 5rem 1.5rem;
+  }
+  .background-branco {
+    padding: 2.5rem 2rem;
+  }
+  h2 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
+  p,
+  li {
+    text-align: left;
+  }
+  .link-meninasdigitais:link,
+  .link-meninasdigitais:visited {
+    font-size: 1rem;
+  }
 }
