@@ -24,7 +24,7 @@ body {
 
 nav {
   display: flex;
-  position: sticky;
+  position: fixed;
   justify-content: center;
   margin: 0;
   top: 0;
@@ -258,7 +258,8 @@ label {
   font-size: 1rem;
 }
 
-input {
+input,
+textarea {
   margin-bottom: 1.5rem;
   background: #fff;
   border: 2px inset silver;
