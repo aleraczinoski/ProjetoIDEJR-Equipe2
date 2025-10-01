@@ -385,12 +385,12 @@ footer a {
 
 .member-card .member-nome {
     text-align: center;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     font-weight: normal;
     color: #000000;
     margin-bottom: 1rem;
     line-height: 1.2;
-    min-height: 3rem; 
+    min-height: 5rem; 
     display: flex;
     align-items: center; 
     justify-content: center;
