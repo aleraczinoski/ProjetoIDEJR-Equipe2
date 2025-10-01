@@ -26,7 +26,7 @@ Por favor, responda diretamente para {email_do_usuario}."""
     message_to_user = f"""\
 Subject: Confirmação: Recebemos sua mensagem!
 
-Olá, {nome},
+Olá, {nome}
 
 Obrigado por entrar em contato! Recebemos sua mensagem com sucesso e nossa equipe responderá o mais breve possível.
 
@@ -37,7 +37,7 @@ Mensagem:
 ---
 
 Atenciosamente,
-Sua Equipe"""
+Equipe2 Program.Ada"""
 
     context = ssl.create_default_context()
 
