@@ -375,14 +375,12 @@
             }
         });
 
-        // --- IMPORTANTE: GARANTA QUE SEU FORMULÁRIO TEM id="Formulario" ---
 const form = document.getElementById("Formulario");
 
 if (form) {
     form.addEventListener("submit", function (event) {
-        event.preventDefault(); // Impede o recarregamento da página
+        event.preventDefault(); 
 
-        // Opcional: Feedback simples no console para indicar que o envio começou
         console.log("Iniciando envio assíncrono...");
 
         const dadosDoForm = new FormData(form);
@@ -393,31 +391,24 @@ if (form) {
         })
             .then((response) => {
                 if (response.status === 204) {
-                    // SUCESSO! A limpeza acontece imediatamente.
                     form.reset(); 
                     
-                    // Opcional: Loga o sucesso, mas não mostra nada para o usuário
                     console.log("Mensagem enviada e inputs limpos (Status 204 OK).");
                     
                 } else if (response.status === 400) {
-                    // BAD REQUEST: dados incompletos
                     console.error("ERRO 400: Por favor, preencha todos os campos do formulário.");
                 } 
                 else {
-                    // Outro erro no servidor (como 500 - Internal Server Error)
                     console.error("ERRO NO SERVIDOR. Status:", response.status);
                 }
             })
             .catch((error) => {
-                // Erro de rede (falha ao conectar ao servidor Flask)
                 console.error("Erro de rede ao processar o formulário:", error);
             });
     });
 } else {
     console.error("ERRO JS: O elemento de formulário com ID 'Formulario' não foi encontrado.");
 }
-
-    
     </script>
   </body>
 </html>
