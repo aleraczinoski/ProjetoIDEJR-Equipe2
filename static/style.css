@@ -266,7 +266,7 @@ textarea {
   outline: none;
   padding: 6px 8px;
   font-family: Inter, sans-serif;
-  font-size: 1.1rem;
+  font-size: 1.3rem;
   transition: border-color 0.2s;
   color: #000;
 }
@@ -292,6 +292,11 @@ textarea {
 
 .botao-contato:hover {
   background-color: #d0d0d0;
+}
+
+textarea {
+  resize: vertical;
+  overflow: hidden;
 }
 
 /* --- ESTILIZAÇÕES DA SEÇÃO INTEGRANTES --- */
@@ -436,7 +441,7 @@ textarea {
 
 .member-card:hover {
   transform: translateY(-3px);
-  box-shadow: 0 6px 10px rgba(44, 0, 62, 0.15);
+  box-shadow: 0 4px 12px rgba(138, 43, 226, 0.35);
 }
 
 .member-card img {
@@ -508,7 +513,8 @@ textarea {
     margin-bottom: 1.5rem;
   }
 
-  #integrantes h2 {
+  #integrantes h2,
+  #contato h2 {
     font-size: 2rem;
     margin-bottom: 1.5rem;
   }
@@ -517,6 +523,7 @@ textarea {
   li {
     text-align: left;
   }
+
   .link-meninasdigitais:link,
   .link-meninasdigitais:visited {
     font-size: 1rem;
