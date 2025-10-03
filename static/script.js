@@ -18,6 +18,8 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     });
   }
+
+
   function initProjetosSlider() {
     const slider = document.getElementById("projetos-carousel-slider");
     const btnLeft = document.getElementById("projetos-carousel-btn-left");
@@ -61,7 +63,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     let currentPage = 0;
     const totalPages = projects.length;
-
+    
     slider.innerHTML = projects
       .map(
         (p) => `
@@ -74,6 +76,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function updateSliderPosition() {
       const offset = currentPage * 100;
+
+     
+
       slider.style.transform = `translateX(-${offset}%)`;
       updateThumbPosition();
 
@@ -88,7 +93,7 @@ document.addEventListener("DOMContentLoaded", function () {
         imageOverlay.classList.remove("active");
       }
     }
-
+    
     function updateThumbPosition() {
       if (totalPages > 1) {
         const progress = currentPage / (totalPages - 1);
@@ -136,62 +141,51 @@ document.addEventListener("DOMContentLoaded", function () {
 
     window.addEventListener("resize", updateThumbPosition);
 
-    // --- MODIFICATION START: Make scrollbar thumb draggable ---
+
 
     let isDragging = false;
 
     const startDrag = (event) => {
       isDragging = true;
-      thumb.classList.add("dragging"); // Optional: for styling
-      // Prevent text selection while dragging
-      document.body.style.userSelect = "none";
+      thumb.classList.add("dragging");
+       document.body.style.userSelect = "none";
     };
 
     const endDrag = () => {
       if (!isDragging) return;
       isDragging = false;
-      thumb.classList.remove("dragging"); // Optional: for styling
+      thumb.classList.remove("dragging");
       document.body.style.userSelect = "";
     };
 
     const onDrag = (event) => {
       if (!isDragging) return;
-      event.preventDefault(); // Prevent default drag behavior
+      event.preventDefault();
 
       const trackRect = track.getBoundingClientRect();
-      // Use touch or mouse event depending on device
-      const clientX = event.touches ? event.touches[0].clientX : event.clientX;
+      
+      
 
-      // Calculate the new position of the thumb
-      let newLeft = clientX - trackRect.left;
+      let newLeft = event.clientX - trackRect.left;
 
-      // Constrain the thumb within the track boundaries
       if (newLeft < 0) newLeft = 0;
       if (newLeft > trackRect.width) newLeft = trackRect.width;
 
-      // Calculate the progress (0 to 1)
       const progress = newLeft / trackRect.width;
 
-      // Determine the corresponding page and snap to it
       const newPage = Math.round(progress * (totalPages - 1));
 
       if (newPage !== currentPage) {
         currentPage = newPage;
-        updateSliderPosition(); // Reuse existing function to update everything
+        updateSliderPosition();
       }
     };
 
-    // Mouse Events
     thumb.addEventListener("mousedown", startDrag);
     window.addEventListener("mouseup", endDrag);
     window.addEventListener("mousemove", onDrag);
 
-    // Touch Events
-    thumb.addEventListener("touchstart", startDrag);
-    window.addEventListener("touchend", endDrag);
-    window.addEventListener("touchmove", onDrag);
 
-    // --- MODIFICATION END ---
 
     updateSliderPosition();
   }
