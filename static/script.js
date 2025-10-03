@@ -19,7 +19,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-
   function initProjetosSlider() {
     const slider = document.getElementById("projetos-carousel-slider");
     const btnLeft = document.getElementById("projetos-carousel-btn-left");
@@ -63,7 +62,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     let currentPage = 0;
     const totalPages = projects.length;
-    
+
     slider.innerHTML = projects
       .map(
         (p) => `
@@ -76,8 +75,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function updateSliderPosition() {
       const offset = currentPage * 100;
-
-     
 
       slider.style.transform = `translateX(-${offset}%)`;
       updateThumbPosition();
@@ -93,7 +90,7 @@ document.addEventListener("DOMContentLoaded", function () {
         imageOverlay.classList.remove("active");
       }
     }
-    
+
     function updateThumbPosition() {
       if (totalPages > 1) {
         const progress = currentPage / (totalPages - 1);
@@ -141,14 +138,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
     window.addEventListener("resize", updateThumbPosition);
 
-
-
     let isDragging = false;
 
     const startDrag = (event) => {
       isDragging = true;
       thumb.classList.add("dragging");
-       document.body.style.userSelect = "none";
+      document.body.style.userSelect = "none";
     };
 
     const endDrag = () => {
@@ -163,8 +158,6 @@ document.addEventListener("DOMContentLoaded", function () {
       event.preventDefault();
 
       const trackRect = track.getBoundingClientRect();
-      
-      
 
       let newLeft = event.clientX - trackRect.left;
 
@@ -184,8 +177,6 @@ document.addEventListener("DOMContentLoaded", function () {
     thumb.addEventListener("mousedown", startDrag);
     window.addEventListener("mouseup", endDrag);
     window.addEventListener("mousemove", onDrag);
-
-
 
     updateSliderPosition();
   }
@@ -430,6 +421,19 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // --- Script do Formulário ---
   const form = document.getElementById("Formulario");
+
+  function showStatusMessage(message, isError = false) {
+    const statusDiv = document.getElementById("statusMessage");
+    if (!statusDiv) return;
+    statusDiv.textContent = message;
+    statusDiv.classList.remove("success", "error");
+    statusDiv.classList.add(isError ? "error" : "success");
+    statusDiv.style.display = "block";
+    setTimeout(() => {
+      statusDiv.style.display = "none";
+    }, 2500);
+  }
+
   if (form) {
     form.addEventListener("submit", function (event) {
       event.preventDefault();
@@ -439,10 +443,23 @@ document.addEventListener("DOMContentLoaded", function () {
         body: dadosDoForm,
       })
         .then((response) => {
-          if (response.status === 204) form.reset();
-          else console.error("Erro no servidor, status:", response.status);
+          if (response.status === 204) {
+            form.reset();
+            showStatusMessage("Sua mensagem foi enviada com sucesso!", false);
+          } else {
+            showStatusMessage(
+              "Ocorreu um erro. Verifique os campos e tente novamente.",
+              true
+            );
+          }
         })
-        .catch((error) => console.error("Erro de rede:", error));
+        .catch((error) => {
+          console.error("Erro de rede:", error);
+          showStatusMessage(
+            "Erro de rede. Por favor, verifique sua conexão.",
+            true
+          );
+        });
     });
   }
 

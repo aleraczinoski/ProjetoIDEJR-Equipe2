@@ -1,15 +1,16 @@
 from flask import Flask, render_template, request, Response
 import smtplib, ssl
 import threading
+import os
+from dotenv import load_dotenv
+load_dotenv()
 
-SENDER_EMAIL = "equipe2program.ada@gmail.com"
-SENDER_PASSWORD = "zocn refd sxsk igsq" 
+SENDER_EMAIL = os.getenv("SENDER_EMAIL")
+SENDER_PASSWORD = os.getenv("SENDER_PASSWORD")
 
 app = Flask(__name__)
 
 def send_emails_async(nome, email_do_usuario, mensagem_do_usuario):
-    """Função que envia e-mails em um thread separado (segundo plano)."""
-
     message_to_sender = f"""\
 Subject: [NOVA MENSAGEM] de {nome} ({email_do_usuario})
 
