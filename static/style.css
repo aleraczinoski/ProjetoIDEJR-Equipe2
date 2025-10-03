@@ -17,11 +17,7 @@ body {
   overflow-x: hidden;
   overscroll-behavior: none;
   color: #2c003e;
-  background-image: linear-gradient(
-    180deg,
-    rgb(215, 186, 241),
-    rgb(239, 196, 247)
-  );
+  
 }
 
 body::-webkit-scrollbar {
@@ -214,6 +210,10 @@ section#integrantes {
 #ImagemProgramada {
   width: 100%;
   margin-top: 6lvh;
+}
+
+.degrade {
+  background-image: radial-gradient(circle, #d1c2ff, #caa6ebff);
 }
 
 .link-meninasdigitais:link,
