@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", function () {
-  
   // --- Script do Menu Hamburger ---
   const hamburger = document.querySelector("#hamburg");
   const hamburgMenu = document.querySelector(".hamburgclick");
@@ -19,8 +18,6 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     });
   }
-
-  // --- Função para iniciar o Carrossel de projetos ---
   function initProjetosSlider() {
     const slider = document.getElementById("projetos-carousel-slider");
     const btnLeft = document.getElementById("projetos-carousel-btn-left");
@@ -38,7 +35,7 @@ document.addEventListener("DOMContentLoaded", function () {
       {
         title: "Portas Abertas 2025",
         description:
-          "Uma oficina de programação em Portugol para o evento \"Portas Abertas\".<br><br>O grupo preparou uma apresentação sobre sua história e conduziu sessões de 30 minutos com os participantes, que tiveram uma boa adesão.",
+          'Uma oficina de programação em Portugol para o evento "Portas Abertas".<br><br>O grupo preparou uma apresentação sobre sua história e conduziu sessões de 30 minutos com os participantes, que tiveram uma boa adesão.',
       },
       {
         title: "Torneio Feminino de Programação",
@@ -65,12 +62,15 @@ document.addEventListener("DOMContentLoaded", function () {
     let currentPage = 0;
     const totalPages = projects.length;
 
-    slider.innerHTML = projects.map(p => `
+    slider.innerHTML = projects
+      .map(
+        (p) => `
         <div class="project-card">
             <h3>${p.title}</h3>
             <p>${p.description}</p>
         </div>`
-    ).join("");
+      )
+      .join("");
 
     function updateSliderPosition() {
       const offset = currentPage * 100;
@@ -79,13 +79,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
       if (currentPage === 0) {
         imageOverlay.innerHTML = `<img src="https://ps2025v2-3n2i4makt-henrique-lindemanns-projects.vercel.app/_next/image?url=%2Fimages%2Fprojetos%2FPA.png&w=256&q=75" alt="Imagem do Projeto 1">`;
-        imageOverlay.classList.add('active');
+        imageOverlay.classList.add("active");
       } else if (currentPage === 2) {
         imageOverlay.innerHTML = `<img src="https://ps2025v2-3n2i4makt-henrique-lindemanns-projects.vercel.app/_next/image?url=%2Fimages%2Fprojetos%2FRC.png&w=256&q=75" alt="Imagem do Projeto 2">`;
-        imageOverlay.classList.add('active');
+        imageOverlay.classList.add("active");
       } else {
-        imageOverlay.innerHTML = '';
-        imageOverlay.classList.remove('active');
+        imageOverlay.innerHTML = "";
+        imageOverlay.classList.remove("active");
       }
     }
 
@@ -115,10 +115,86 @@ document.addEventListener("DOMContentLoaded", function () {
       updateSliderPosition();
     });
 
-    window.addEventListener('resize', updateThumbPosition);
+    slider.addEventListener("wheel", (event) => {
+      event.preventDefault();
+      if (event.deltaY > 0) {
+        if (currentPage === totalPages - 1) {
+          currentPage = 0;
+        } else {
+          currentPage++;
+        }
+        updateSliderPosition();
+      } else {
+        if (currentPage === 0) {
+          currentPage = totalPages - 1;
+        } else {
+          currentPage--;
+        }
+        updateSliderPosition();
+      }
+    });
+
+    window.addEventListener("resize", updateThumbPosition);
+
+    // --- MODIFICATION START: Make scrollbar thumb draggable ---
+
+    let isDragging = false;
+
+    const startDrag = (event) => {
+      isDragging = true;
+      thumb.classList.add("dragging"); // Optional: for styling
+      // Prevent text selection while dragging
+      document.body.style.userSelect = "none";
+    };
+
+    const endDrag = () => {
+      if (!isDragging) return;
+      isDragging = false;
+      thumb.classList.remove("dragging"); // Optional: for styling
+      document.body.style.userSelect = "";
+    };
+
+    const onDrag = (event) => {
+      if (!isDragging) return;
+      event.preventDefault(); // Prevent default drag behavior
+
+      const trackRect = track.getBoundingClientRect();
+      // Use touch or mouse event depending on device
+      const clientX = event.touches ? event.touches[0].clientX : event.clientX;
+
+      // Calculate the new position of the thumb
+      let newLeft = clientX - trackRect.left;
+
+      // Constrain the thumb within the track boundaries
+      if (newLeft < 0) newLeft = 0;
+      if (newLeft > trackRect.width) newLeft = trackRect.width;
+
+      // Calculate the progress (0 to 1)
+      const progress = newLeft / trackRect.width;
+
+      // Determine the corresponding page and snap to it
+      const newPage = Math.round(progress * (totalPages - 1));
+
+      if (newPage !== currentPage) {
+        currentPage = newPage;
+        updateSliderPosition(); // Reuse existing function to update everything
+      }
+    };
+
+    // Mouse Events
+    thumb.addEventListener("mousedown", startDrag);
+    window.addEventListener("mouseup", endDrag);
+    window.addEventListener("mousemove", onDrag);
+
+    // Touch Events
+    thumb.addEventListener("touchstart", startDrag);
+    window.addEventListener("touchend", endDrag);
+    window.addEventListener("touchmove", onDrag);
+
+    // --- MODIFICATION END ---
+
     updateSliderPosition();
   }
-
   // --- Função para iniciar o Carrossel de INTEGRANTES ---
   function initIntegrantesSlider() {
     const slider = document.getElementById("integrantes-carousel-slider");
@@ -272,21 +348,28 @@ document.addEventListener("DOMContentLoaded", function () {
     let itemsPerPage = 4;
     let cardHeight = 0;
 
-    slider.innerHTML = members.map(m => `
+    slider.innerHTML = members
+      .map(
+        (m) => `
         <div class="member-card">
             <img src="${m.img}" alt="Foto de ${m.nome}" loading="lazy">
             <div class="member-info">
                 <p class="member-nome">${m.nome}</p>
                 <p class="member-curso">${m.curso}</p>
-                ${m.date ? `<p class="member-date">Ingresso na faculdade: ${m.date}</p>` : ""}
+                ${
+                  m.date
+                    ? `<p class="member-date">Ingresso na faculdade: ${m.date}</p>`
+                    : ""
+                }
             </div>
         </div>`
-    ).join("");
+      )
+      .join("");
 
     function calculateLayout() {
       const firstCard = slider.children[0];
       if (!firstCard) return;
-      
+
       itemsPerPage = 4;
       totalPages = Math.ceil(members.length / itemsPerPage);
       const rowGap = parseFloat(window.getComputedStyle(slider).rowGap);
@@ -338,6 +421,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
     btnUp.addEventListener("click", () => moveSlider("up"));
     btnDown.addEventListener("click", () => moveSlider("down"));
+
+    slider.addEventListener("wheel", (event) => {
+      event.preventDefault();
+      if (event.deltaY < 0) {
+        moveSlider("up");
+      } else {
+        moveSlider("down");
+      }
+    });
     window.addEventListener("resize", calculateLayout);
     setTimeout(calculateLayout, 200);
   }
@@ -352,15 +444,14 @@ document.addEventListener("DOMContentLoaded", function () {
         method: "POST",
         body: dadosDoForm,
       })
-      .then((response) => {
-        if (response.status === 204) form.reset();
-        else console.error("Erro no servidor, status:", response.status);
-      })
-      .catch((error) => console.error("Erro de rede:", error));
+        .then((response) => {
+          if (response.status === 204) form.reset();
+          else console.error("Erro no servidor, status:", response.status);
+        })
+        .catch((error) => console.error("Erro de rede:", error));
     });
   }
-  
+
   initProjetosSlider();
   initIntegrantesSlider();
-
 });
