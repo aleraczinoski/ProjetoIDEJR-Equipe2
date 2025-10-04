@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", function () {
-  // --- Script do Menu Hamburger ---
   const hamburger = document.querySelector("#hamburg");
   const hamburgMenu = document.querySelector(".hamburgclick");
   if (hamburger && hamburgMenu) {
@@ -75,7 +74,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function updateSliderPosition() {
       const offset = currentPage * 100;
-
       slider.style.transform = `translateX(-${offset}%)`;
       updateThumbPosition();
 
@@ -98,7 +96,6 @@ document.addEventListener("DOMContentLoaded", function () {
         thumb.style.left = `${newLeft}px`;
       }
     }
-
     btnLeft.addEventListener("click", () => {
       if (currentPage === 0) {
         currentPage = totalPages - 1;
@@ -155,6 +152,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const onDrag = (event) => {
       if (!isDragging) return;
+
       event.preventDefault();
 
       const trackRect = track.getBoundingClientRect();
@@ -180,7 +178,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     updateSliderPosition();
   }
-  // --- Função para iniciar o Carrossel de INTEGRANTES ---
+
   function initIntegrantesSlider() {
     const slider = document.getElementById("integrantes-carousel-slider");
     const btnUp = document.getElementById("integrantes-carousel-btn-up");
@@ -336,18 +334,18 @@ document.addEventListener("DOMContentLoaded", function () {
     slider.innerHTML = members
       .map(
         (m) => `
-        <div class="member-card">
-            <img src="${m.img}" alt="Foto de ${m.nome}" loading="lazy">
-            <div class="member-info">
-                <p class="member-nome">${m.nome}</p>
-                <p class="member-curso">${m.curso}</p>
-                ${
-                  m.date
-                    ? `<p class="member-date">Ingresso na faculdade: ${m.date}</p>`
-                    : ""
-                }
-            </div>
-        </div>`
+      <div class="member-card">
+        <img src="${m.img}" alt="Foto de ${m.nome}" loading="lazy">
+        <div class="member-info">
+          <p class="member-nome">${m.nome}</p>
+          <p class="member-curso">${m.curso}</p>
+          ${
+            m.date
+              ? `<p class="member-date">Ingresso na faculdade: ${m.date}</p>`
+              : ""
+          }
+        </div>
+      </div>`
       )
       .join("");
 
@@ -355,7 +353,12 @@ document.addEventListener("DOMContentLoaded", function () {
       const firstCard = slider.children[0];
       if (!firstCard) return;
 
-      itemsPerPage = 4;
+      if (window.innerWidth <= 900) {
+        itemsPerPage = 1;
+      } else {
+        itemsPerPage = 4;
+      }
+
       totalPages = Math.ceil(members.length / itemsPerPage);
       const rowGap = parseFloat(window.getComputedStyle(slider).rowGap);
       cardHeight = firstCard.offsetHeight + rowGap;
@@ -378,10 +381,8 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function updateSliderPosition() {
-      let yOffset = 0;
-      if (window.innerWidth <= 900) {
-        yOffset = currentPage * itemsPerPage * cardHeight;
-      } else {
+      let yOffset = currentPage * itemsPerPage * cardHeight;
+      if (window.innerWidth > 900) {
         yOffset = currentPage * cardHeight;
       }
       slider.style.transform = `translateY(-${yOffset}px)`;
@@ -393,13 +394,13 @@ document.addEventListener("DOMContentLoaded", function () {
       if (totalPages > 1) {
         const progress = currentPage / (totalPages - 1);
         if (window.innerWidth <= 900) {
-          thumb.style.top = "0px";
           const newLeft = progress * (track.offsetWidth - thumb.offsetWidth);
           thumb.style.left = `${newLeft}px`;
+          thumb.style.top = "";
         } else {
-          thumb.style.left = "0px";
           const newTop = progress * (track.offsetHeight - thumb.offsetHeight);
           thumb.style.top = `${newTop}px`;
+          thumb.style.left = "";
         }
       }
     }
@@ -417,9 +418,49 @@ document.addEventListener("DOMContentLoaded", function () {
     });
     window.addEventListener("resize", calculateLayout);
     setTimeout(calculateLayout, 200);
+
+    let isDragging = false;
+    let startPos = 0;
+    let thumbOffset = 0;
+
+    const startDrag = (event) => {
+      isDragging = true;
+      thumb.classList.add("dragging");
+      document.body.style.userSelect = "none";
+      startPos = window.innerWidth <= 900 ? event.clientX : event.clientY;
+      thumbOffset = window.innerWidth <= 900 ? thumb.offsetLeft : thumb.offsetTop;
+    };
+
+    const endDrag = () => {
+      if (!isDragging) return;
+      isDragging = false;
+      thumb.classList.remove("dragging");
+      document.body.style.userSelect = "auto";
+    };
+
+    const onDrag = (event) => {
+      if (!isDragging) return;
+      event.preventDefault();
+      const trackRect = track.getBoundingClientRect();
+      const thumbLength = window.innerWidth <= 900 ? thumb.offsetWidth : thumb.offsetHeight;
+      const trackLength = window.innerWidth <= 900 ? trackRect.width : trackRect.height;
+      const currentPos = window.innerWidth <= 900 ? event.clientX : event.clientY;
+      const newPos = thumbOffset + (currentPos - startPos);
+      let clampedPos = Math.max(0, Math.min(newPos, trackLength - thumbLength));
+      const progress = clampedPos / (trackLength - thumbLength);
+      const newPage = Math.round(progress * (totalPages - 1));
+
+      if (newPage !== currentPage) {
+        currentPage = newPage;
+        updateSliderPosition();
+      }
+    };
+
+    thumb.addEventListener("mousedown", startDrag);
+    window.addEventListener("mouseup", endDrag);
+    window.addEventListener("mousemove", onDrag);
   }
 
-  // --- Script do Formulário ---
   const form = document.getElementById("Formulario");
 
   function showStatusMessage(message, isError = false) {
