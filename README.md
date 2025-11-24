@@ -1,86 +1,57 @@
-# Website Institucional - Program.Ada (Processo Seletivo IDE JR)
+# Website Institucional - Program.Ada
 
-![License](https://img.shields.io/badge/license-MIT-blue.svg)
+![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
+![Flask](https://img.shields.io/badge/flask-%23000.svg?style=for-the-badge&logo=flask&logoColor=white)
+![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
+![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
 
-**Projeto desenvolvido pela Equipe 2** como parte do processo seletivo da IDE JR.
+> **Projeto desenvolvido pela Equipe 2 para o Processo Seletivo da IDE JR.**
+
+Este repositório contém o código-fonte do website institucional do **Program.Ada**, um coletivo de mulheres da computação da UFRGS. O objetivo do projeto foi criar uma plataforma moderna, responsiva e funcional para divulgar as iniciativas e integrantes do grupo.
+
+### 🌐 Acesso ao Projeto
+
+Você pode visualizar o projeto rodando em tempo real no link abaixo:
+
+👉 **[Acesse o site aqui: projetoidejr-equipe2.onrender.com](https://projetoidejr-equipe2.onrender.com)**
 
 ---
 
-## 📜 Sobre o Projeto
+## 📋 Sobre o Projeto
 
-Este repositório contém o website institucional completo do **Program.Ada**, um coletivo de mulheres da computação da UFRGS. O projeto foi desenvolvido pela **Equipe 2** como nossa entrega para o processo seletivo da **IDE JR**, demonstrando nossas habilidades em desenvolvimento full-stack, desde um frontend responsivo e interativo até um backend funcional e seguro.
+O site foi construído seguindo uma arquitetura **Full-Stack**, integrando um frontend dinâmico e responsivo com um backend robusto para gerenciar as rotas e o envio de mensagens.
+
+### ✨ Principais Funcionalidades
+
+* **Design Totalmente Responsivo:** Layout adaptável que oferece uma ótima experiência em desktops, tablets e celulares.
+* **Interatividade:**
+    * Menu "Hamburger" animado para navegação mobile.
+    * Carrossel horizontal para exibição dos projetos.
+    * Carrossel vertical paginado para apresentação das integrantes.
+* **Comunicação:** Formulário de contato funcional, integrado ao backend para envio automático de e-mails para a administração do coletivo.
+* **Feedback Visual:** Sistema de alertas que informa ao usuário o status do envio da mensagem (sucesso ou erro).
 
 ---
-
-## ✨ Principais Funcionalidades
-
-- **Design Totalmente Responsivo** para desktops, tablets e celulares.
-- **Menu Hamburger Funcional** implementado com JavaScript puro.
-- **Carrosséis Interativos** para Projetos (horizontal) e Integrantes (vertical/paginado).
-- **Formulário de Contato Funcional** com envio de e-mail assíncrono (backend em Flask).
-- **Feedback Visual** para o usuário após o envio do formulário.
 
 ## 🛠️ Tecnologias Utilizadas
 
-- **Frontend:** HTML5, CSS3, JavaScript
-- **Backend:** Python, Flask
+A construção do projeto utilizou as seguintes tecnologias:
 
-## 🚀 Como Executar o Projeto
+* **Frontend:** HTML5, CSS3, JavaScript (Vanilla)
+* **Backend:** Python, Flask 
+* **Deploy/Hospedagem:** Render
 
-Para clonar e executar este projeto em sua máquina local, siga os passos abaixo.
+---
 
-1.  **Clone o repositório:**
+## 👥 Autores (Equipe 2)
 
-    ```sh
-    git clone [https://github.com/rafaelsilvacalil-design/projeto-equipe2.git](https://github.com/rafaelsilvacalil-design/projeto-equipe2.git)
-    cd projeto-equipe2
-    ```
-
-2.  **Crie e ative um ambiente virtual:**
-
-    - No **Windows**:
-      ```sh
-      python -m venv venv
-      venv\Scripts\activate
-      ```
-    - No **macOS/Linux**:
-      ```sh
-      python3 -m venv venv
-      source venv/bin/activate
-      ```
-
-3.  **Instale as dependências:**
-    O arquivo `requirements.txt` contém todos os pacotes Python necessários. Instale-os com um único comando:
-
-    ```sh
-    pip install -r requirements.txt
-    ```
-
-4.  **Configure as Variáveis de Ambiente:**
-
-    - Crie um arquivo chamado `.env` na raiz do projeto.
-    - Adicione suas credenciais de e-mail a este arquivo para que o formulário de contato funcione:
-      ```env
-      SENDER_EMAIL="seu-email-gmail@gmail.com"
-      SENDER_PASSWORD="sua-senha-de-app-do-gmail"
-      ```
-    - **Importante:** Adicione a linha `.env` ao seu arquivo `.gitignore` para manter suas credenciais seguras.
-
-5.  **Execute a aplicação:**
-
-    ```sh
-    python programada.py
-    ```
-
-6.  **Acesse no navegador:**
-    Abra seu navegador e acesse `http://127.0.0.1:5000`.
+* [Alexandre Raczinoski](https://github.com/aleraczinoski)
+* [Rafael Silva Calil](https://github.com/rafaelsilvacalil-design)
+* [Giovanni Milanez](https://github.com/Gcmilanez)
 
 ---
 
 ## 📄 Licença
 
-Este projeto está distribuído sob a licença MIT.
-
-## 👥 Equipe
-
-- **Projeto desenvolvido pela Equipe 2** para o Processo Seletivo da IDE JR.
+Este projeto está licenciado sob a licença MIT.
