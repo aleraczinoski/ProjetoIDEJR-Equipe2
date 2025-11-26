@@ -40,14 +40,13 @@ Mensagem:
 Atenciosamente,
 Equipe2 Program.Ada"""
 
-    context = ssl.create_default_context()
-
     try:
-        with smtplib.SMTP_SSL("smtp.gmail.com", 465, context=context) as server:
+        with smtplib.SMTP("smtp.gmail.com", 587) as server:
+            server.starttls() 
+            
             server.login(SENDER_EMAIL, SENDER_PASSWORD)
             
             server.sendmail(SENDER_EMAIL, SENDER_EMAIL, message_to_sender.encode('utf-8'))
-
             server.sendmail(SENDER_EMAIL, email_do_usuario, message_to_user.encode('utf-8'))
             
         print(f"E-mails enviados com sucesso para {email_do_usuario} e {SENDER_EMAIL}")
